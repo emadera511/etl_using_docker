@@ -1,7 +1,7 @@
 import logging 
 
 from sqlalchemy import create_engine 
-from utils.db import WarehouseDBCOnnection
+from utils.db import WarehouseConnection
 from utils.sde_config import get_warehouse_creds
 
 
@@ -14,7 +14,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__) 
 
 def create_conn(
-    connection_string=WarehouseDBCOnnection(
+    connection_string=WarehouseConnection(
         get_warehouse_creds()
     ).connection_string(),
 ):
@@ -25,7 +25,7 @@ def create_conn(
         return engine
     except Exception as e:
         logger.error("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        logger.error(f"Enable to connect to postgres : {e}")
+        logger.error(f"Unable to connect to postgres : {e}")
 
 
 def close_conn(engine):
