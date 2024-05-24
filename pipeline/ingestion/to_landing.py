@@ -17,8 +17,9 @@ def load_to_landing(df, engine, table_name):
             engine, 
             if_exists = 'replace', 
             index = False, 
-            schema = "landing_zone"
+            schema = "landing_area"
         )
+        logger.info("Data Loaded Successful")
 
     except Exception as e: 
         logger.error("!!!!!!!!!!!!!!!!!!!!!!!")
